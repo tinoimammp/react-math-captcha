@@ -1,0 +1,6 @@
+export { createCaptchaHandler } from './handler.js'
+export type { CreateCaptchaHandlerOptions } from './handler.js'
+export { verifyCaptchaToken } from './verify.js'
+export type { VerifyOptions } from './verify.js'
+export { CaptchaError } from '../core/errors.js'
+export type { CaptchaErrorCode } from '../core/errors.js'
