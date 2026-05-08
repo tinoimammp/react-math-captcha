@@ -1,0 +1,89 @@
+{
+  "name": "react-math-captcha",
+  "version": "0.1.0",
+  "description": "Lightweight, self-hosted math CAPTCHA for React & Next.js. No Redis, no tracking, no bloat.",
+    "author": {
+    "name": "Tino",
+    "url": "https://github.com/tinoimammp"
+  },
+  "homepage": "https://github.com/tinoimammp/react-math-captcha#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinoimammp/react-math-captcha.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tinoimammp/react-math-captcha/issues"
+  },
+  "keywords": [
+    "captcha",
+    "math-captcha",
+    "react",
+    "nextjs",
+    "anti-spam",
+    "self-hosted",
+    "human-verification"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    ".env.example"
+  ],
+  "exports": {
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "import": "./dist/core/index.js"
+    }
+  },
+    "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "clean": "rimraf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run clean && npm run build && npm test"
+  },
+  "dependencies": {
+    "jose": "^5.9.6",
+    "nanoid": "^5.0.9"
+  },
+  "peerDependencies": {
+    "next": ">=14.0.0",
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "vitest": "^4.1.5",
+    "@eslint/js": "^9.15.0",
+    "@types/node": "^20.17.6",
+    "@types/react": "^18.3.12",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "next": "^14.2.18",
+    "react": "^18.3.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0"
+  }
+}
