@@ -7,7 +7,6 @@
  *   VERIFY_SUCCESS — issue verification, reset counters.
  */
 
-import { nanoid } from 'nanoid'
 import type { Challenge } from './generator.js'
 import type { SessionData, ChallengeState } from './session.js'
 import { CaptchaError } from './errors.js'
@@ -74,7 +73,7 @@ function clearLockIfElapsed(state: SessionData, now: number): SessionData {
 
 function makeChallengeState(challenge: Challenge, now: number, ttlMs: number): ChallengeState {
   return {
-    jti: nanoid(),
+    jti: crypto.randomUUID(),
     answer: challenge.answer,
     expiresAt: now + ttlMs,
     used: false,
@@ -154,7 +153,7 @@ export function transition(
 
     case 'VERIFY_SUCCESS': {
       const verification = {
-        jti: nanoid(),
+        jti: crypto.randomUUID(),
         scope: action.scope,
         expiresAt: now + config.verificationTtlMs,
       }
